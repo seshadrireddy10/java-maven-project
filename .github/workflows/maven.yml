@@ -4,15 +4,18 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_run:
+    workflows: [Self Reviewed Monitor]
+    types:
+      - completed
+    branches: [main]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
 
     steps:
     - uses: actions/checkout@v3
