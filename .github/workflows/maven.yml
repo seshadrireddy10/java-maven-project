@@ -8,7 +8,6 @@ on:
     workflows: [Self Reviewed Monitor]
     types:
       - completed
-    branches: [main]
 
 jobs:
   build:
